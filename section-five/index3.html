@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!----React Library-->
+    <script
+      crossorigin
+      src="https://unpkg.com/react@18/umd/react.development.js"
+    ></script>
+    <!--DOM Library-->
+    <script
+      crossorigin
+      src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"
+    ></script>
+    <!--Babel Library-->
+    <script
+      crossorigin
+      src="https://unpkg.com/@babel/standalone/babel.min.js"
+    ></script>
+
+    <title>Styling Components</title>
+  </head>
+  <body>
+    <div id="app">react has not rendered yet</div>
+    <script type="text/babel">
+      let Colors = function (props) {
+        let _style = {
+          height: 50,
+          width: 150,
+          backgroundColor: props.colorname,
+        };
+        let colorname =
+          props.colorname.charAt(0).toUpperCase() + props.colorname.slice(1);
+        return <h1 style={_style}>{colorname}</h1>;
+      };
+
+      let ColorSpectrum = function () {
+        return (
+          <div>
+            <Colors colorname='red' />
+            <Colors colorname='Orange' />
+            <Colors colorname='yellow' />
+            <Colors colorname='blue' />
+            <Colors colorname='indigo' />
+            <Colors colorname='violet' />
+          </div>
+        );
+      };
+      ReactDOM.render(<ColorSpectrum />, document.getElementById('app'));
+    </script>
+  </body>
+</html>

@@ -1,0 +1,180 @@
+<!---insert boilerplate code-->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!----React Library-->
+    <script
+      crossorigin
+      src="https://unpkg.com/react@17/umd/react.development.js"
+    ></script>
+    <!--DOM Library-->
+    <script
+      crossorigin
+      src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"
+    ></script>
+    <!--Babel Library-->
+    <script
+      crossorigin
+      src="https://unpkg.com/@babel/standalone/babel.min.js"
+    ></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css"
+    />
+    <title>Friendly</title>
+  </head>
+  <body>
+    <div id="app">react has not rendered yet</div>
+
+    <!--javascript-->
+    <script type="text/babel">
+      //friendly
+      function CreateFriendlyCards(props) {
+
+        return(props.users.map(function(user){
+
+        let _style = {
+          display: 'inline-block',
+          verticalAlign: 'bottom',
+          margin: 20,
+          height: 300,
+          width: 200,
+          padding: 0,
+          backgroundColor: '#FFF',
+          WebkitFilter: 'drop-shadow(0px 0px 5px #555)',
+          filter: 'drop-shadow(0px 0px 5px #555)',
+        };
+        return (
+          <div key={user.id} style={_style}>
+            <Avatar img={user.profile} />
+            <UserName name={user.name} />
+            <GetConnected />
+          </div>
+        );
+        }));
+      }
+
+      function Friendly(props){
+        return(
+          <div>
+            <h1>Men</h1>
+            <div>
+              <CreateFriendlyCards users={props.users.filter(x=>!x.female)}/>
+            </div>
+            <hr/>
+            <h1>Women</h1>
+            <div>
+              <CreateFriendlyCards users={props.users.filter(x=>x.female)}/>
+            </div>
+          </div>
+        )
+      }
+      //avatar
+      function Avatar(props) {
+        let _style = {
+          marginLeft: 27,
+          marginTop: 20,
+          width: 150,
+          height: 150,
+          borderRadius: '50%',
+        };
+        return <img src={props.img} alt='profile pic' style={_style} />;
+      }
+      //username
+      function UserName(props) {
+        let _style = {
+          textAlign: 'center',
+          fontSize: 24,
+          fontFamily: 'Arial, Helvetica, sans-serif',
+          margin: 20,
+          whiteSpace: 'nowrap',
+        };
+        return <h1 style={_style}>{props.name}</h1>;
+      }
+
+      let iconStyle = {
+        margin: 20,
+      };
+      //getConected
+      function GetConnected() {
+        let getConnectedStyle = {
+          marginLeft: 15,
+        };
+        return (
+          <div style={getConnectedStyle}>
+            <Like />
+            <Share />
+            <Add />
+          </div>
+        );
+      }
+      //like component
+      function Like() {
+        return (
+          <i
+            className='fa fa-thumbs-up'
+            aria-hidden='true'
+            style={iconStyle}></i>
+        );
+      }
+      //Share
+      function Share() {
+        return (
+          <i
+            className='fa fa-share-alt'
+            aria-hidden='true'
+            style={iconStyle}></i>
+        );
+      }
+      //add
+      function Add() {
+        return (
+          <i className='fa fa-users' aria-hidden='true' style={iconStyle}></i>
+        );
+      }
+      let personList = [];      
+      personList.push({
+        id:0,
+        name: 'Edgar Cortés',
+        profile:
+          'https://www.researchgate.net/publication/344603358/figure/fig1/AS:945655560286208@1602473263829/Example-of-Cat-Meme_Q320.jpg',
+        female:false
+      });
+
+
+      personList.push({
+        id:1,
+        name: 'Denise Cortés',
+        profile:
+          'https://images.wikidexcdn.net/mwuploads/esacrossing/f/fc/latest/20200221070627/Canela_%28New_Horizons%29.png',
+        female:true
+      });
+
+      personList.push({
+        id:2,
+        name: 'Diego Cortés',
+        profile:
+          'https://www.sdpnoticias.com/resizer/OsAwjq-0HNJJn6uV59Ydcl_PyHI=/440x248/filters:format(jpg):quality(90):focal(422x72:432x82)/cloudfront-us-east-1.images.arcpublishing.com/sdpnoticias/CNCMX4Z6KJFSHBYOYZM7HPRMM4.jpg',
+        female:false
+      });
+
+        personList.push({
+          id:3,
+        name: 'Carmen Lara',
+        profile:
+          'https://img.uhdpaper.com/wallpaper/princess-peach-the-super-mario-bros-movie-738@1@j-thumb.jpg',
+        female:true
+      });
+
+      ReactDOM.render(
+        <div>
+          <Friendly users={personList} />
+        </div>,
+        document.getElementById('app')
+      );
+    </script>
+  </body>
+</html>

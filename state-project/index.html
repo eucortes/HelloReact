@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!----React Library-->
+    <script
+      crossorigin
+      src="https://unpkg.com/react@17/umd/react.development.js"
+    ></script>
+    <!--DOM Library-->
+    <script
+      crossorigin
+      src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"
+    ></script>
+    <!--Babel Library-->
+    <script
+      crossorigin
+      src="https://unpkg.com/@babel/standalone/babel.min.js"
+    ></script>
+
+    <title>Let's React</title>
+  </head>
+  <body>
+    <!--Designated locatin to insert react contect-->
+    <div id="app">react has not rendered yet</div>
+
+    <!--javascript-->
+    <script type="text/babel">
+      class DinnerVote extends React.Component{
+        constructor(props){
+          super(props);
+          this.state={
+            votes:0
+          }
+        }
+        render(){
+          let _style={
+            display: 'inline-block',
+            verticalAlign: 'bottom',
+            textAlign: 'center',
+            margin:20,
+            height:400,
+            width:300,
+            padding:0,
+            backgroundColor: '#FFF',
+            WebkitFilter: 'drop-shadow(0px 0px 5px #555)',
+            filter: 'drop-shadow(0px 0px 5px #555)',
+            alignItems:"center"
+          }
+          let _TitleStyle = {
+            fontSize: 24,
+            fontFamily: 'Arial, Helvetica, sans-serif',
+            margin: 20,
+            whiteSpace: 'nowrap',
+          };
+
+          let _TextStyle = {
+            fontSize: 18,
+            fontFamily: 'Arial, Helvetica, sans-serif',
+            margin: 8,
+            whiteSpace: 'nowrap',
+          };
+
+          return(
+            <div style={_style}>
+              <DinnerImage img={this.props.img}/>
+              <h1 style={_TitleStyle}>Dinner Time</h1>
+              <div style={_TextStyle}>Vote here if you want this</div>
+              <button onClick={()=>this.onClickVoteUp()}>+1</button>
+              <div style={_TextStyle}>Vote here if you Do Not want this</div>
+              <button onClick={()=>this.onClickVoteDown()}>-1</button>
+              <div  style={_TextStyle}>Total: {this.state.votes}</div>
+            </div>
+          );
+        }
+        onClickVoteUp(){
+          this.setState(
+            {
+              votes: this.state.votes+1
+            }
+          )
+        }
+
+          onClickVoteDown(){
+          this.setState(
+            {
+              votes: this.state.votes-1
+            }
+          )
+        }
+
+      }
+
+      class DinnerImage extends React.Component{
+        render(){
+          let _style={
+            marginTop: 20,
+            marginLeft: 70,
+            width:150,
+            height: 150,
+          }
+          return(
+            <img src={this.props.img} style={_style}/>
+          );
+        }
+      }
+
+
+
+      ReactDOM.render(
+        <div>
+          <DinnerVote img="https://static.pexels.com/photos/46239/salmon-dish-food-meal-46239.jpeg"/>
+          <DinnerVote img="https://static.pexels.com/photos/58722/pexels-photo-58722.jpeg"/>
+          <DinnerVote img="https://static.pexels.com/photos/70497/pexels-photo-70497.jpeg"/>
+        </div>
+        , document.getElementById('app'));
+    </script>
+  </body>
+</html>

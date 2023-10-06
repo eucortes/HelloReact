@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!----React Library-->
+    <script
+      crossorigin
+      src="https://unpkg.com/react@18/umd/react.development.js"
+    ></script>
+    <!--DOM Library-->
+    <script
+      crossorigin
+      src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"
+    ></script>
+    <!--Babel Library-->
+    <script
+      crossorigin
+      src="https://unpkg.com/@babel/standalone/babel.min.js"
+    ></script>
+    <title>Stateless Functional Components</title>
+  </head>
+  <body>
+    <div id="app">react has not rendered yet</div>
+    <script type="text/babel">
+      //first stateless functional component
+      let ColorSpectrum = function () {
+        return <h1>Red, Orange, Yellow, Green, Blue, Indigo, Violet</h1>;
+      };
+
+      let Red = function () {
+        return <h1>Red</h1>;
+      };
+
+      let Orange = function () {
+        return <h1>Orange</h1>;
+      };
+
+      let Yellow = function () {
+        return <h1>Yellow</h1>;
+      };
+
+      let Green = function () {
+        return <h1>Green</h1>;
+      };
+
+      let Blue = function () {
+        return <h1>Blue</h1>;
+      };
+
+      let Indigo = function () {
+        return <h1>Indigo</h1>;
+      };
+
+      let Violet = function () {
+        return <h1>Violet</h1>;
+      };
+
+      ReactDOM.render(
+        <div>
+          <Red />
+          <Orange />
+          <Yellow />
+          <Blue />
+          <Indigo />
+          <Violet />
+        </div>,
+        document.getElementById('app')
+      );
+    </script>
+  </body>
+</html>

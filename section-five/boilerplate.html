@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!----React Library-->
+    <script
+      crossorigin
+      src="https://unpkg.com/react@18/umd/react.development.js"
+    ></script>
+    <!--DOM Library-->
+    <script
+      crossorigin
+      src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"
+    ></script>
+    <!--Babel Library-->
+    <script
+      crossorigin
+      src="https://unpkg.com/@babel/standalone/babel.min.js"
+    ></script>
+
+    <title>Let's React</title>
+  </head>
+  <body>
+    <!--Designated locatin to insert react contect-->
+    <div id="app">react has not rendered yet</div>
+
+    <!--javascript-->
+    <script type="text/babel">
+      ReactDOM.render(<h1>Hello world</h1>, document.getElementById('app'));
+    </script>
+  </body>
+</html>
